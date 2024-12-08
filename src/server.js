@@ -24,6 +24,12 @@ export const setupServer = () => {
     }),
   );
 
+  app.get('/', (req, res) => {
+    res.status(200).json({
+      message: 'Welcome to the Contacts API!',
+    });
+  });
+
   app.get('/contacts', async (req, res) => {
     const contacts = await getAllContacts();
 
@@ -52,10 +58,9 @@ export const setupServer = () => {
     });
   });
 
-  app.use('*', (err, req, res, next) => {
+  app.use('*', (req, res) => {
     res.status(404).json({
       message: 'Not found',
-      error: err.message,
     });
   });
 
