@@ -54,6 +54,9 @@ export const getContactByIdController = async (req, res, next) => {
 
 export const createContactController = async (req, res) => {
   const userId = req.user._id;
+
+  const photo = req.file;
+
   const contact = await createContact({ ...req.body, userId });
 
   res.status(201).json({
@@ -79,6 +82,8 @@ export const deleteContactController = async (req, res, next) => {
 export const patchContactController = async (req, res, next) => {
   const { contactId } = req.params;
   const userId = req.user._id;
+
+  const photo = req.file;
 
   const result = await updateContact(contactId, req.body, userId);
 
