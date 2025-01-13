@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "url": "https://example.com/api/v1"
+      "url": "https://contacts-app-a7gm.onrender.com"
     }
   ],
   "tags": [
@@ -367,10 +367,13 @@
         ],
         "responses": {
           "204": {
-            "description": "Contact deleted successfully"
+            "description": "No content"
           },
           "401": {
             "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -399,9 +402,15 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "name",
+                  "phoneNumber",
+                  "contactType",
+                  "userId"
+                ],
                 "properties": {
                   "name": {
                     "description": "Contact's name",
@@ -432,10 +441,15 @@
                       "personal"
                     ]
                   },
+                  "userId": {
+                    "description": "User's id",
+                    "type": "string",
+                    "example": "65e4decdd286b30065d54af9"
+                  },
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
-                    "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+                    "format": "binary"
                   }
                 }
               }
