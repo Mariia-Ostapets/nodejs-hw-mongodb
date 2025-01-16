@@ -17,10 +17,6 @@ requestBody:
     multipart/form-data:
       schema:
         type: object
-        required:
-          - name
-          - phoneNumber
-          - contactType
         properties:
           name:
             description: "Contact's name"
@@ -48,7 +44,7 @@ requestBody:
             format: binary
 responses:
   '200':
-    description: 'Successfully patched a contact!'
+    description: 'Update contact'
     content:
       application/json:
         schema:
@@ -71,3 +67,5 @@ responses:
     $ref: '../../../components/responses/401.yaml'
   '404':
     $ref: '../../../components/responses/404.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'
