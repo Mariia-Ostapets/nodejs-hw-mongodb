@@ -15,6 +15,7 @@ import {
 import { isValidId } from '../middlewares/isValidId.js';
 import { authenticate } from '../middlewares/authenticate.js';
 import { upload } from '../middlewares/multer.js';
+import { filterEmptyFields } from '../middlewares/filterEmptyFields.js';
 
 const router = Router();
 
@@ -37,6 +38,7 @@ router.patch(
   '/:contactId',
   isValidId,
   upload.single('photo'),
+  filterEmptyFields,
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
 );
