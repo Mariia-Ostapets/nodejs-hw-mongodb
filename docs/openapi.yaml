@@ -12,8 +12,7 @@ tags:
   - name: Auth
     description: Auth operations.
 servers:
-  # - url: https://contacts-app-a7gm.onrender.com
-  - url: http://localhost:3000
+  - url: https://contacts-app-a7gm.onrender.com
 paths:
   /contacts:
     get:
@@ -45,6 +44,12 @@ paths:
   /auth/reset-pwd:
     post:
       $ref: ../swagger/paths/auth/resetPwd.yaml
+  /auth/get-oauth-url:
+    get:
+      $ref: ../swagger/paths/auth/getOAuthUrl.yaml
+  /auth/confirm-oauth:
+    post:
+      $ref: ../swagger/paths/auth/confirmOAuth.yaml
 components:
   securitySchemes:
     bearerAuth:
