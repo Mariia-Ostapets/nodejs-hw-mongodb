@@ -977,7 +977,7 @@
         "tags": [
           "Auth"
         ],
-        "summary": "confirm Auth by Google OAuth Code",
+        "summary": "Confirm Auth by Google OAuth Code",
         "operationId": "confirmOAuth",
         "description": "Sign Up or Login with Google OAuth code from recently received URL",
         "security": [],
