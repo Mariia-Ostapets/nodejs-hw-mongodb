@@ -6,9 +6,6 @@ import { getEnvVar } from './utils/getEnvVar.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import router from './routers/index.js';
-import cookieParser from 'cookie-parser';
-import { UPLOAD_DIR } from './constants/index.js';
-import { swaggerDocs } from './middlewares/swaggerDocs.js';
 
 dotenv.config();
 
@@ -19,7 +16,6 @@ export const setupServer = () => {
 
   app.use(express.json());
   app.use(cors());
-  app.use(cookieParser());
 
   app.use(
     pino({
@@ -31,13 +27,9 @@ export const setupServer = () => {
 
   app.get('/', (req, res) => {
     res.status(200).json({
-      message: 'Welcome to the Contacts API!',
+      message: 'Welcome to the Questionnaire Builder App API!',
     });
   });
-
-  app.use('/uploads', express.static(UPLOAD_DIR));
-
-  app.use('/api-docs', swaggerDocs());
 
   app.use(router);
 
